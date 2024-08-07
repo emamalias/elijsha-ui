@@ -1,0 +1,46 @@
+---
+import DefaultNav from './nav/Default.astro'
+import Brand from '../../shared/brand/index.astro';
+import { type LinkProps, type ButtonProps, cn } from "@nextui-org/react";
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+    logo?: ImageMetadata;
+    brandName?: string;
+    links?: LinkProps[];
+	buttons?: ButtonProps[];
+    className?: string;
+}
+
+const {
+    links,
+    buttons,
+    ...props
+} = Astro.props;
+
+const brandTitle = props.brandName || "Elijsha UI";
+---
+<section id="header" class={cn("relative", props.className)}>
+    {
+        (Astro.slots.has("links")) && (
+            <div class="brand">
+                <Fragment slot="brand">
+                    <Brand title={brandTitle}>
+                        {props.logo && <slot name="logo">{props.logo}</slot>}
+                    </Brand>
+                </Fragment>
+            </div>
+        )
+    }
+    <div class="main-nav">
+        <DefaultNav
+            links={links}
+            buttons={buttons}
+            {...props}
+        />
+    </div>
+    <div class="hero">
+        <slot name="hero" />
+    </div>
+    <slot />
+</section>

@@ -1,0 +1,103 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/landing/header/Header.astro';
+import Footer from '../components/landing/footer/Default.astro';
+import LogoSVG from '../../src/assets/images/logo.svg';
+import Hero from '../components/landing/header/hero/Default.astro';
+import Wrapper from '../components/Wrapper.astro';
+import Section from '../components/Section.astro';
+---
+<Layout 
+	title="Simplifying Job Search & Employer Insights"
+	description="Discover detailed information about employers and candidates effortlessly with Trabaho.io. Streamline your job search and hiring process with our intuitive platform designed to connect you with the right opportunities and talent."
+>
+	<Header
+		logo={LogoSVG}
+		brandName="Trabaho.io"
+		links={[
+			{
+				href: "#platform",
+				color: "foreground",
+				content: "Platform",
+			},
+			{
+				href: "#why-us",
+				color: "foreground",
+				content: "Why Trabaho?",
+			},
+			{
+				href: "#about-us",
+				color: "foreground",
+				content: "About",
+			},
+			{
+				href: "#contact",
+				color: "foreground",
+				content: "Get in touch",
+			},
+		]}
+
+		buttons={[
+			{
+				href: "#post-job",
+				color: "primary",
+				variant: "bordered",
+				content: "Post a job",
+			},
+			{
+				href: "#find-job",
+				color: "primary",
+				content: "Find jobs",
+			},
+		]}
+	>
+		<Hero 
+			headline="Discover Opportunities and Talent with Ease"
+			description="Great platform for the job seeker that searching for new career heights and passionate about startups."
+		>
+			<Fragment slot="left">
+				dawdawdwada131
+			</Fragment>
+			<Fragment slot="right">
+				<div class="absolute z-1 top-0 left-0 lg:h-[1037px]">
+					awdawdawd21 23 1231231dwae
+				</div>
+			</Fragment>
+		</Hero>
+	</Header>
+
+	<main>
+		<Section id="brand-logos" class="bg-inherit">
+			<Wrapper>
+				logos
+			</Wrapper>
+		</Section>
+		<Section id="featured-categories" class="bg-white">
+			<Wrapper>
+				categories
+			</Wrapper>
+		</Section>
+		<Section id="cta" class="bg-white">
+			<Wrapper>
+				cta
+			</Wrapper>
+		</Section>
+		<Section id="featured-jobs" class="bg-white">
+			<Wrapper>
+				featured jobs
+			</Wrapper>
+		</Section>
+		<Section id="latest-jobs" class="bg-white">
+			<Wrapper>
+				latest jobs
+			</Wrapper>
+		</Section>
+	</main>
+
+	<Footer
+		logo={LogoSVG}
+		brandName="Trabaho.io"
+	>
+		footer
+	</Footer>
+</Layout>

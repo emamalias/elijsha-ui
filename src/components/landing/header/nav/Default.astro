@@ -1,0 +1,55 @@
+---
+import {cn, Link, Button} from "@nextui-org/react";
+import type { LinkProps, ButtonProps } from "@nextui-org/react";
+import Brand from "../../../shared/brand/index.astro";
+
+interface Props {
+    links?: LinkProps[];
+    buttons?: ButtonProps[];
+    brandName?: string;
+    className?: string;
+}
+
+const {
+    links,
+    buttons,
+    brandName = "Elijsha UI",
+    className,
+    ...props 
+} = Astro.props;
+---
+<div class="flex z-40 w-full h-auto items-center justify-center sticky top-0 inset-x-0 py-2">
+    <header class={cn("z-40 flex px-6 gap-4 w-full flex-row relative flex-nowrap items-center justify-between h-[var(--navbar-height)] container", className)}>
+        <Link href="/" color="foreground" className="flex-1 flex w-max items-center justify-start" slot="brand">
+            <Brand title={brandName} />
+        </Link>
+
+        <slot name="links">
+            <div class="flex gap-6 text-xl font-normal">
+                {links && links.map(link => (
+                    <Link className="hover:underline" {...link}>{link.content}</Link>
+                ))}
+            </div> 
+        </slot>
+
+        <slot name="cta">
+            <div class="flex-1 flex gap-2 items-center justify-end w-max">
+                {buttons && buttons.map((btn) => {
+                    if(btn.href) {
+                        return (
+                            <Button {...btn} as={Link}>
+                                {btn.content}
+                            </Button>
+                        );
+                    }
+                    return (
+                        <Button {...btn}>
+                            {btn.content}
+                        </Button>
+                    );
+                })}
+            </div>
+        </slot>
+    </header>
+</div>
+
